@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>React Hello World</title>
+</head>
+<body>
+    <div id="application-root"></div>
+  
+  <script
+    src="https://unpkg.com/react@16/umd/react.development.js">
+  </script>
+  <script
+    src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
+  </script>
+  <script
+    src="https://unpkg.com/babel-standalone@6/babel.min.js">
+  </script>
+  
+  <script type="text/babel">
+    function App(props) {
+        return <div>{props.children}</div>;
+    }
+
+    function Header(props) {
+        return <header><h2>{props.title}</h2></header>
+    }
+
+    function Job(props) {
+        return (
+            <div>
+                <h3>{props.title}</h3>
+                <ul>
+                    <li>{props.companyName}</li>
+                    <li>{props.years}</li>
+                </ul>
+                <p>{props.description}</p>
+            </div>
+        );
+    }
+
+    function Education(props) {
+        return (
+            <section>
+                <Header
+                    title={props.title}
+                />
+                <ul>
+                    <li>{props.school}</li>
+                </ul>
+            </section>
+        )
+    }
+
+    function Contact(props) {
+        return (
+            <section>
+                <Header
+                    title={props.title}
+                />
+                <img src={props.img} />
+                <p>{props.name}</p>
+                <address>
+                    <a href={`mailto:${props.email}`}>{props.email}</a><br/>
+                    <a href={`tel:${props.tel}`}>{props.tel}</a>
+                </address>
+            </section>
+        );
+    }
+
+    ReactDOM.render(
+        <App>
+            <header>
+                <h1>Sally Student Resume</h1>
+            </header>
+            <Header
+                title="Employment"
+            />
+            <Job
+                title="Software Engineer II"
+                companyName="Really Fake Company"
+                years="2018 - 2019"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae veritatis sed laborum, accusantium ut dolore asperiores
+				ea enim, hic fuga corporis? Id cupiditate, voluptatibus veniam doloribus consectetur quia! Quae, eveniet?"
+            />
+            <Job
+                title="Software Engineer"
+                companyName="Fake Company"
+                years="2015 - 2018"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae veritatis sed laborum, accusantium ut dolore asperiores
+				ea enim, hic fuga corporis? Id cupiditate, voluptatibus veniam doloribus consectetur quia! Quae, eveniet?"
+            />
+            <Contact
+                title="Contact Info"
+                img="https://ia.media-imdb.com/images/M/MV5BMTY5NzE3NzU3MF5BMl5BanBnXkFtZTgwMjg0NTQ5MDE@._V1_UX214_CR0,0,214,317_AL_.jpg"
+                email="sally@email.com"
+                tel="+311-555-2368"
+            />
+            <Education
+                title="Education"
+                school="University of Random"
+            />
+        </App>, document.querySelector('#application-root')
+);
+  </script>
+  </body>
+</html>
